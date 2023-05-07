@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+{% block body %}
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Teams</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-primary" href="{{ path('teams_add') }}">
+                    Create New Team
+                </a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered" id="example" class="display" style="width:100%">
+                        <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Balance</th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+                    {% for team in teams %}
+                        <tbody>
+                        <tr>
+                            <td>{{ team.name }}</td>
+                            <td>{{ team.country }}</td>
+                            <td>{{ team.balance }}</td>
+                           <td>
+                                <form method="post" action="{{ path('teams_add', {'id': team.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <a
+                                            class="btn btn-outline-info"
+                                            href="{{ path('team_showPlayer', {'id': team.id}) }}">
+                                        Show Players
+                                    </a>
+                                </form>
+                               <form method="post" action="{{ path('team_players_add', {'id': team.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                   <a
+                                           class="btn btn-outline-info"
+                                           href="{{ path('team_players_add', {'id': team.id}) }}">
+                                       Add Players
+                                   </a>
+                               </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
