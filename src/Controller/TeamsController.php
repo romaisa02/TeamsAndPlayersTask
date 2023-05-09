@@ -70,20 +70,7 @@ class TeamsController extends AbstractController
             'player' => $player,
             'form' => $form,
         ]);
-        /* $entityManager = $doctrine->getManager();
 
-         $team = new Teams();
-         $team->setName('Team B');
-         $team->setCountry("USA");
-         $team->setBalance(100);
-
-         // tell Doctrine you want to (eventually) save the Team (no queries yet)
-         $entityManager->persist($team);
-
-         // actually executes the queries (i.e. the INSERT query)
-         $entityManager->flush();
-
-         return new Response('Saved new team with id '.$team->getId());*/
     }
     /**
      * @Route("/teams/{id}", name="team_showPlayer", methods={"GET"})

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Project{% endblock %}
+{% block title %}Sell/Buy Player{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2 class="text-center mt-5 mb-3">Create Project</h2>
+        <h2 class="text-center mt-5 mb-3">Player name: {{ {{ player.name }} }}</h2>
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-outline-info float-right" href="{{ path('teams_index') }}">
@@ -12,17 +12,15 @@
                 </a>
             </div>
             <div class="card-body">
+
                 {{ form_start(form) }}
                 <div class="form-group">
-                    {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.id, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_row(form.country, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
                 </div>
-                <div class="form-group">
-                    {{ form_row(form.balance, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Save Team') }}</button>
+                <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Save Player') }}</button>
                 {{ form_end(form) }}
             </div>
         </div>
