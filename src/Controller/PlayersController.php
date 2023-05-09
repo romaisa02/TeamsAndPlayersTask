@@ -32,31 +32,14 @@ class PlayersController extends AbstractController
      */
     public function show(PlayersRepository $playerRepository, $id): Response
     {
+        $player = $playerRepository->find($id);
+
         return $this->render('players/show.html.twig', [
             'player' => $playerRepository->find($id),
-            'team'=>['name'=>'dddd']
+            'team'=>['name'=>$player->getTeamId()->getName()]
         ]);
     }
 
-    /**
-     * @Route("/players/add", name="app_players_add")
-     */
-    public function add(ManagerRegistry $doctrine): Response
-    {
-        $entityManager = $doctrine->getManager();
-
-        $player = new Players();
-        $player->setName('David');
-        $player->setSurname("Allan");
-
-        // tell Doctrine you want to (eventually) save the Team (no queries yet)
-        $entityManager->persist($player);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return new Response('Saved new player with id '.$player->getId());
-    }
     /**
      * @Route("/player/sell/{id}", name="player_sell")
      */

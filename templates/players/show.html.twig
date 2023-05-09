@@ -12,7 +12,11 @@
                 <b class="text-muted">Surname:</b>
                 <p>{{ player.surname }}</p>
                 <b class="text-muted">Team:</b>
-                <p>{{ player.team_id ?? 'NULL' }}</p>
+                <p>{{ team.name ?? 'NULL' }}</p>
+                <a class="btn btn-outline-info float-right" href="{{ path('player_sell',{'id':player.id}) }}">
+                    Sell/Buy Player
+                </a>
+                <a></a>
             </div>
         </div>
     </div>
